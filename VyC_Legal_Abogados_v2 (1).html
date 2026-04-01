@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V & C Legal Abogados</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111111;
+    --dark2: #1a1a1a;
+    --gold: #c9a84c;
+    --gold-light: #e2c27d;
+    --gold-dark: #a07830;
+    --white: #f5f2eb;
+    --white2: #ede9df;
+    --gray: #888880;
+    --gray2: #555550;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.5rem 5%;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.98), transparent);
+    transition: background 0.4s;
+  }
+  nav.scrolled { background: rgba(10,10,10,0.97); border-bottom: 1px solid rgba(201,168,76,0.15); }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600; letter-spacing: 0.05em;
+    color: var(--white); text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--white2); text-decoration: none;
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 500; transition: color 0.3s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1px; background: var(--gold);
+    transform: scaleX(0); transition: transform 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-cta {
+    background: transparent; border: 1px solid var(--gold);
+    color: var(--gold) !important; padding: 0.5rem 1.4rem;
+    font-size: 0.65rem !important; letter-spacing: 0.2em !important;
+    cursor: pointer; transition: all 0.3s !important;
+  }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--black) !important; }
+  .nav-cta::after { display: none !important; }
+
+  /* ── HERO ── */
+  #inicio {
+    min-height: 100vh; display: flex; align-items: center;
+    position: relative; overflow: hidden; padding: 0 5%;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,168,76,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 80% at 10% 50%, rgba(201,168,76,0.03) 0%, transparent 50%),
+      var(--black);
+  }
+  .hero-lines {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+  }
+  .hero-ornament {
+    position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+    width: 420px; height: 420px;
+    border: 1px solid rgba(201,168,76,0.12); border-radius: 50%;
+    animation: spin 60s linear infinite;
+  }
+  .hero-ornament::before {
+    content: ''; position: absolute; inset: 20px;
+    border: 1px solid rgba(201,168,76,0.08); border-radius: 50%;
+  }
+  .hero-ornament::after {
+    content: ''; position: absolute; inset: 60px;
+    border: 1px solid rgba(201,168,76,0.06); border-radius: 50%;
+  }
+  @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+  .hero-scales {
+    position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
+    font-size: 10rem; opacity: 0.04; pointer-events: none; line-height: 1;
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 700px; }
+
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 2rem; animation: fadeUp 1s ease both;
+  }
+  .hero-eyebrow-line { width: 40px; height: 1px; background: var(--gold); }
+  .hero-eyebrow span {
+    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 300;
+    line-height: 1.05; color: var(--white); margin-bottom: 1.5rem;
+    animation: fadeUp 1s 0.15s ease both;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); display: block; }
+
+  .hero-subtitle {
+    font-size: 0.85rem; color: var(--gray); line-height: 1.9;
+    max-width: 500px; margin-bottom: 3rem;
+    animation: fadeUp 1s 0.3s ease both; font-weight: 400;
+  }
+
+  .hero-btns {
+    display: flex; gap: 1.2rem; flex-wrap: wrap;
+    animation: fadeUp 1s 0.45s ease both;
+  }
+
+  .btn-primary {
+    background: var(--gold); color: var(--black);
+    border: none; cursor: pointer; padding: 1rem 2.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.3s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,168,76,0.25); }
+
+  .btn-secondary {
+    background: transparent; border: 1px solid rgba(201,168,76,0.4);
+    color: var(--white2); padding: 1rem 2.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.3s; display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    position: absolute; bottom: 8%; right: 5%; left: 5%;
+    display: flex; gap: 3rem; animation: fadeUp 1s 0.6s ease both;
+  }
+  .stat { border-left: 1px solid rgba(201,168,76,0.3); padding-left: 1.5rem; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 300; color: var(--gold); line-height: 1;
+  }
+  .stat-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); margin-top: 0.3rem; }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 8rem 5%; }
+
+  .section-tag { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+  .section-tag-line { width: 30px; height: 1px; background: var(--gold); }
+  .section-tag span {
+    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 300;
+    color: var(--white); line-height: 1.15; margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-divider {
+    width: 60px; height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    margin: 2rem 0;
+  }
+
+  /* ── QUIÉNES SOMOS ── */
+  #quienes { background: var(--dark); position: relative; overflow: hidden; }
+  #quienes::before {
+    content: '§'; position: absolute; right: 5%; top: 50%;
+    transform: translateY(-50%); font-size: 28rem;
+    color: rgba(201,168,76,0.025);
+    font-family: 'Cormorant Garamond', serif; pointer-events: none;
+  }
+  .quienes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .quienes-text p { color: var(--gray); line-height: 1.95; font-size: 0.88rem; margin-bottom: 1.5rem; font-weight: 400; }
+
+  .valores-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+  .valor-item {
+    border: 1px solid rgba(201,168,76,0.1); padding: 1.5rem;
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .valor-item::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 0; background: var(--gold); transition: height 0.4s;
+  }
+  .valor-item:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.03); }
+  .valor-item:hover::before { height: 100%; }
+  .valor-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
+  .valor-name { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .valor-desc { font-size: 0.78rem; color: var(--gray); line-height: 1.6; }
+
+  .quienes-visual { position: relative; }
+  .quienes-card {
+    background: var(--dark2); border: 1px solid rgba(201,168,76,0.12); padding: 3rem; position: relative;
+  }
+  .quienes-card::before {
+    content: ''; position: absolute; top: -1px; left: 2rem; right: 2rem;
+    height: 2px; background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .quote-mark {
+    font-family: 'Cormorant Garamond', serif; font-size: 5rem;
+    color: var(--gold); opacity: 0.3; line-height: 0.5; margin-bottom: 1rem; display: block;
+  }
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
+    font-style: italic; color: var(--white2); line-height: 1.6; margin-bottom: 1.5rem;
+  }
+  .quote-author { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+
+  .pilares { display: flex; gap: 1rem; margin-top: 2rem; }
+  .pilar { flex: 1; text-align: center; padding: 1.2rem 0.5rem; border-top: 1px solid rgba(201,168,76,0.2); }
+  .pilar-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--gold); font-weight: 300; line-height: 1; }
+  .pilar-label { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); margin-top: 0.3rem; }
+
+  /* ── SERVICIOS ── */
+  #servicios { background: var(--black); }
+  .servicios-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 5rem; }
+  .servicios-intro p { color: var(--gray); font-size: 0.88rem; line-height: 1.9; }
+  .servicios-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5px; background: rgba(201,168,76,0.1); }
+
+  .servicio-card {
+    background: var(--black); padding: 3rem 2.5rem;
+    transition: all 0.4s; position: relative; overflow: hidden; cursor: default;
+  }
+  .servicio-card::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.06), transparent);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .servicio-card:hover { background: var(--dark2); }
+  .servicio-card:hover::after { opacity: 1; }
+  .serv-number {
+    font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300;
+    color: rgba(201,168,76,0.12); line-height: 1; margin-bottom: 1rem; transition: color 0.3s;
+  }
+  .servicio-card:hover .serv-number { color: rgba(201,168,76,0.25); }
+  .serv-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .serv-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600;
+    color: var(--white); margin-bottom: 0.8rem; line-height: 1.2;
+  }
+  .serv-desc { color: var(--gray); font-size: 0.8rem; line-height: 1.8; margin-bottom: 1.5rem; }
+  .serv-list { list-style: none; }
+  .serv-list li {
+    font-size: 0.72rem; color: var(--gray2); padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.06);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .serv-list li::before { content: '—'; color: var(--gold); font-size: 0.6rem; }
+  .serv-arrow {
+    position: absolute; bottom: 2.5rem; right: 2.5rem;
+    color: var(--gold); font-size: 1.2rem;
+    opacity: 0; transform: translateX(-8px); transition: all 0.3s;
+  }
+  .servicio-card:hover .serv-arrow { opacity: 1; transform: translateX(0); }
+
+  /* ── EXPERIENCIA ── */
+  #experiencia { background: var(--dark); position: relative; }
+  .exp-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 5rem; }
+  .exp-header p { color: var(--gray); font-size: 0.88rem; line-height: 1.9; align-self: end; }
+  .exp-tabs {
+    display: flex; gap: 0; margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .exp-tab {
+    padding: 0.8rem 1.8rem; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gray2); cursor: pointer; border: none; background: none;
+    border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.3s;
+    font-family: 'Montserrat', sans-serif; font-weight: 500;
+  }
+  .exp-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .exp-tab:hover { color: var(--white2); }
+  .exp-panel { display: none; }
+  .exp-panel.active { display: block; }
+  .exp-items { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .exp-item {
+    border: 1px solid rgba(201,168,76,0.08); padding: 2rem;
+    transition: all 0.3s; position: relative;
+  }
+  .exp-item:hover { border-color: rgba(201,168,76,0.25); background: rgba(201,168,76,0.02); }
+  .exp-year { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+  .exp-client { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--white); margin-bottom: 0.4rem; }
+  .exp-matter { font-size: 0.78rem; color: var(--gray); line-height: 1.6; }
+  .exp-sector {
+    display: inline-block; margin-top: 1rem;
+    padding: 0.2rem 0.8rem; border: 1px solid rgba(201,168,76,0.2);
+    font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-dark);
+  }
+
+  /* ── EQUIPO ── */
+  #equipo { background: var(--black); }
+  .equipo-header { text-align: center; margin-bottom: 5rem; }
+  .equipo-header .section-divider { margin: 1.5rem auto; }
+  .equipo-header p { color: var(--gray); font-size: 0.88rem; max-width: 500px; margin: 0 auto; line-height: 1.9; }
+  .equipo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+
+  .abogado-card {
+    background: var(--dark); border: 1px solid rgba(201,168,76,0.1);
+    overflow: hidden; transition: all 0.4s; position: relative;
+  }
+  .abogado-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); }
+  .abogado-avatar {
+    height: 220px; background: var(--dark2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem; position: relative; overflow: hidden;
+  }
+  .abogado-avatar::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 60px; background: linear-gradient(to top, var(--dark), transparent);
+  }
+  .avatar-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(201,168,76,0.08), transparent); }
+  .abogado-info { padding: 1.8rem; }
+  .abogado-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--white); margin-bottom: 0.3rem; }
+  .abogado-role { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .abogado-esp { font-size: 0.75rem; color: var(--gray); line-height: 1.7; }
+  .abogado-areas { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+  .area-tag {
+    font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.25rem 0.7rem; border: 1px solid rgba(201,168,76,0.2); color: var(--gray2);
+  }
+
+  /* ── PROCESO ── */
+  #proceso {
+    background: var(--black);
+    position: relative; overflow: hidden;
+  }
+  #proceso::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .proceso-header { text-align: center; margin-bottom: 5rem; }
+  .proceso-header .section-tag { justify-content: center; }
+  .proceso-header .section-divider { margin: 1.5rem auto; }
+  .proceso-header p { color: var(--gray); font-size: 0.88rem; max-width: 560px; margin: 0 auto; line-height: 1.9; }
+
+  .proceso-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .proceso-steps::before {
+    content: '';
+    position: absolute;
+    top: 2.8rem; left: 12.5%; right: 12.5%;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold-dark), var(--gold), var(--gold-dark));
+    opacity: 0.3;
+  }
+
+  .proceso-step {
+    text-align: center; padding: 0 2rem; position: relative;
+  }
+  .paso-num {
+    width: 56px; height: 56px;
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; color: var(--gold);
+    background: var(--black);
+    position: relative; z-index: 1;
+    transition: all 0.4s;
+  }
+  .proceso-step:hover .paso-num {
+    background: rgba(201,168,76,0.1);
+    border-color: var(--gold);
+    box-shadow: 0 0 30px rgba(201,168,76,0.15);
+  }
+  .paso-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600;
+    color: var(--white); margin-bottom: 0.8rem;
+  }
+  .paso-desc { font-size: 0.75rem; color: var(--gray); line-height: 1.75; }
+
+  /* ── TESTIMONIOS ── */
+  #testimonios {
+    background: var(--dark);
+    position: relative; overflow: hidden;
+  }
+  #testimonios::after {
+    content: '"';
+    position: absolute; right: 3%; bottom: -5%;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40rem; line-height: 1;
+    color: rgba(201,168,76,0.02); pointer-events: none;
+  }
+  .testimonios-header { text-align: center; margin-bottom: 4rem; }
+  .testimonios-header .section-tag { justify-content: center; }
+  .testimonios-header .section-divider { margin: 1.5rem auto; }
+
+  .testimonios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+
+  .testimonio-card {
+    background: var(--dark2);
+    border: 1px solid rgba(201,168,76,0.08);
+    padding: 2.5rem;
+    position: relative;
+    transition: all 0.4s;
+  }
+  .testimonio-card::before {
+    content: '';
+    position: absolute; top: -1px; left: 1.5rem; right: 1.5rem;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.4), transparent);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .testimonio-card:hover { border-color: rgba(201,168,76,0.2); transform: translateY(-3px); }
+  .testimonio-card:hover::before { opacity: 1; }
+
+  .testimonio-stars {
+    display: flex; gap: 0.25rem; margin-bottom: 1.5rem;
+  }
+  .testimonio-stars span { color: var(--gold); font-size: 0.8rem; }
+
+  .testimonio-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-style: italic;
+    color: var(--white2); line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .testimonio-author {
+    display: flex; align-items: center; gap: 1rem;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding-top: 1.2rem;
+  }
+  .testimonio-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .testimonio-name { font-size: 0.72rem; font-weight: 600; color: var(--white2); letter-spacing: 0.05em; }
+  .testimonio-cargo { font-size: 0.6rem; color: var(--gray); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.2rem; }
+
+  /* ── FAQ ── */
+  #faq {
+    background: var(--black);
+    position: relative;
+  }
+  #faq::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent);
+  }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 6rem; align-items: start; }
+
+  .faq-intro p { color: var(--gray); font-size: 0.85rem; line-height: 1.9; margin-top: 1.5rem; }
+  .faq-cta {
+    margin-top: 3rem;
+    padding: 2rem;
+    border: 1px solid rgba(201,168,76,0.15);
+    background: rgba(201,168,76,0.03);
+  }
+  .faq-cta p { font-size: 0.78rem; color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem; }
+
+  .faq-items { display: flex; flex-direction: column; gap: 0; }
+  .faq-item {
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+    overflow: hidden;
+  }
+  .faq-item:first-child { border-top: 1px solid rgba(201,168,76,0.08); }
+
+  .faq-question {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.5rem 0; cursor: pointer; gap: 1rem;
+    transition: color 0.3s;
+  }
+  .faq-question:hover { color: var(--gold); }
+  .faq-question span:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--white2); line-height: 1.4;
+    transition: color 0.3s;
+  }
+  .faq-question:hover span:first-child { color: var(--gold-light); }
+  .faq-icon {
+    color: var(--gold); font-size: 1.2rem; flex-shrink: 0;
+    transition: transform 0.3s; font-style: normal;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  .faq-answer {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+  }
+  .faq-item.open .faq-answer { max-height: 300px; }
+  .faq-answer p {
+    font-size: 0.82rem; color: var(--gray); line-height: 1.85;
+    padding-bottom: 1.5rem;
+  }
+
+  /* ── BLOG ── */
+  #blog {
+    background: var(--dark);
+    position: relative; overflow: hidden;
+  }
+  .blog-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
+  .blog-header p { color: var(--gray); font-size: 0.85rem; line-height: 1.9; align-self: end; }
+
+  .blog-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1.5rem; }
+
+  .blog-card {
+    background: var(--dark2);
+    border: 1px solid rgba(201,168,76,0.08);
+    overflow: hidden; position: relative;
+    transition: all 0.4s; cursor: pointer;
+  }
+  .blog-card:hover { border-color: rgba(201,168,76,0.25); transform: translateY(-3px); }
+
+  .blog-img {
+    height: 220px;
+    background: var(--black);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem; position: relative; overflow: hidden;
+  }
+  .blog-card.featured .blog-img { height: 300px; }
+  .blog-img-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, var(--dark2));
+  }
+  .blog-img-pattern {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .blog-content { padding: 1.8rem; }
+  .blog-cat {
+    font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.8rem; display: block;
+  }
+  .blog-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600;
+    color: var(--white); line-height: 1.3; margin-bottom: 0.8rem;
+  }
+  .blog-card.featured .blog-title { font-size: 1.7rem; }
+  .blog-excerpt { font-size: 0.75rem; color: var(--gray); line-height: 1.7; margin-bottom: 1.2rem; }
+  .blog-card:not(.featured) .blog-excerpt { display: none; }
+  .blog-meta { display: flex; align-items: center; gap: 1rem; }
+  .blog-date { font-size: 0.6rem; color: var(--gray2); letter-spacing: 0.1em; }
+  .blog-read { font-size: 0.6rem; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; }
+
+  /* ── CONTACTO ── */
+  #contacto { background: var(--dark); position: relative; overflow: hidden; }
+  #contacto::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .contacto-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start; }
+  .contacto-items { margin-top: 3rem; display: flex; flex-direction: column; gap: 2rem; }
+  .contacto-item { display: flex; gap: 1.2rem; align-items: flex-start; }
+  .contacto-item-icon {
+    width: 44px; height: 44px; border: 1px solid rgba(201,168,76,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0; color: var(--gold);
+  }
+  .contacto-item-label { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+  .contacto-item-value { font-size: 0.85rem; color: var(--white2); line-height: 1.6; }
+
+  .contacto-form { background: var(--dark2); border: 1px solid rgba(201,168,76,0.1); padding: 3rem; }
+  .form-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--white); margin-bottom: 0.4rem; }
+  .form-subtitle { font-size: 0.75rem; color: var(--gray); margin-bottom: 2.5rem; line-height: 1.6; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label {
+    display: block; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 0.5rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; background: var(--dark);
+    border: 1px solid rgba(201,168,76,0.1); color: var(--white2);
+    padding: 0.85rem 1rem; font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem; font-weight: 300; outline: none;
+    transition: border-color 0.3s; appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select option { background: var(--dark2); }
+
+  .form-submit {
+    width: 100%; background: var(--gold); color: var(--black);
+    border: none; cursor: pointer; padding: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
+    transition: all 0.3s; margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 8px 30px rgba(201,168,76,0.2); }
+
+  /* ── MAPA ── */
+  #mapa {
+    background: var(--black);
+    padding: 0;
+    position: relative;
+  }
+  .mapa-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .mapa-info {
+    padding: 5rem;
+    background: var(--dark2);
+    display: flex; flex-direction: column; justify-content: center;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+  .mapa-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 300; color: var(--white); margin-bottom: 0.5rem;
+  }
+  .mapa-title em { color: var(--gold); font-style: italic; }
+  .mapa-divider { width: 40px; height: 1px; background: var(--gold); margin: 1.5rem 0; }
+  .mapa-sedes { display: flex; flex-direction: column; gap: 2rem; margin-top: 1rem; }
+  .sede {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.5rem; border: 1px solid rgba(201,168,76,0.1);
+    transition: border-color 0.3s;
+  }
+  .sede:hover { border-color: rgba(201,168,76,0.3); }
+  .sede-icon {
+    width: 38px; height: 38px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .sede-city { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+  .sede-address { font-size: 0.8rem; color: var(--white2); line-height: 1.5; }
+  .sede-phone { font-size: 0.72rem; color: var(--gray); margin-top: 0.3rem; }
+
+  .mapa-visual {
+    height: 500px;
+    background: var(--dark);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+  .mapa-placeholder {
+    text-align: center; position: relative; z-index: 2;
+  }
+  .mapa-placeholder-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.4; }
+  .mapa-placeholder p { font-size: 0.72rem; color: var(--gray); letter-spacing: 0.1em; }
+  .mapa-grid-bg {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .mapa-dot {
+    position: absolute; width: 12px; height: 12px;
+    border-radius: 50%; background: var(--gold);
+    box-shadow: 0 0 20px rgba(201,168,76,0.5);
+  }
+  .mapa-dot::after {
+    content: ''; position: absolute; inset: -8px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50%; animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0; }
+  }
+  .mapa-dot-1 { top: 35%; left: 38%; }
+  .mapa-dot-2 { top: 55%; left: 62%; }
+  .mapa-line {
+    position: absolute; top: 35%; left: 38%;
+    width: 90px; height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    transform: rotate(25deg); transform-origin: left center;
+    opacity: 0.3;
+  }
+  .mapa-label {
+    position: absolute;
+    font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); white-space: nowrap;
+  }
+  .mapa-label-1 { top: 27%; left: 28%; }
+  .mapa-label-2 { top: 60%; left: 55%; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+  .footer-main {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem; padding: 5rem 5% 4rem;
+  }
+  .footer-brand {}
+  .footer-logo-f {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600; color: var(--white);
+    margin-bottom: 1rem; display: block; text-decoration: none;
+  }
+  .footer-logo-f span { color: var(--gold); }
+  .footer-tagline { font-size: 0.75rem; color: var(--gray); line-height: 1.8; max-width: 280px; margin-bottom: 2rem; }
+  .footer-social { display: flex; gap: 0.8rem; }
+  .social-btn {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; color: var(--gray);
+    text-decoration: none; transition: all 0.3s;
+  }
+  .social-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.05); }
+
+  .footer-col h4 {
+    font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .footer-col ul li a {
+    font-size: 0.75rem; color: var(--gray2); text-decoration: none;
+    transition: color 0.3s; letter-spacing: 0.05em;
+  }
+  .footer-col ul li a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(201,168,76,0.08);
+    padding: 1.8rem 5%;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-copy { font-size: 0.62rem; color: var(--gray2); letter-spacing: 0.05em; }
+  .footer-legal { display: flex; gap: 2rem; }
+  .footer-legal a { font-size: 0.62rem; color: var(--gray2); text-decoration: none; letter-spacing: 0.08em; transition: color 0.3s; }
+  .footer-legal a:hover { color: var(--gold); }
+
+  /* ── WHATSAPP FLOAT ── */
+  .whatsapp-float {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; text-decoration: none;
+    box-shadow: 0 8px 30px rgba(201,168,76,0.35);
+    transition: all 0.3s; animation: fadeUp 1s 1s ease both;
+  }
+  .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 12px 40px rgba(201,168,76,0.5); }
+  .whatsapp-tooltip {
+    position: absolute; right: 70px; top: 50%; transform: translateY(-50%);
+    background: var(--dark2); color: var(--white2);
+    font-size: 0.62rem; letter-spacing: 0.1em; white-space: nowrap;
+    padding: 0.5rem 1rem; border: 1px solid rgba(201,168,76,0.2);
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  }
+  .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── MOBILE ── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 0.5rem; }
+  .hamburger span { width: 24px; height: 1px; background: var(--white); transition: all 0.3s; display: block; }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .quienes-grid, .servicios-intro, .exp-header,
+    .equipo-grid, .contacto-grid, .faq-grid,
+    .blog-header, .mapa-grid { grid-template-columns: 1fr; }
+    .servicios-grid { grid-template-columns: 1fr; }
+    .exp-items { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-ornament { width: 250px; height: 250px; right: -5%; }
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .valores-grid { grid-template-columns: 1fr; }
+    .pilares { gap: 0.5rem; }
+    .proceso-steps { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .proceso-steps::before { display: none; }
+    .testimonios-grid { grid-template-columns: 1fr; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .footer-main { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .mapa-info { padding: 3rem 5%; }
+    .mapa-visual { height: 300px; }
+  }
+
+  @media (max-width: 600px) {
+    .footer-main { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .proceso-steps { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#inicio" class="nav-logo">V <span>&</span> C Legal</a>
+  <ul class="nav-links">
+    <li><a href="#quienes">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#experiencia">Experiencia</a></li>
+    <li><a href="#equipo">Equipo</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contacto" class="nav-cta">Consulta Gratuita</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-ornament"></div>
+  <div class="hero-scales">⚖</div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Firma Legal Especializada</span>
+    </div>
+    <h1 class="hero-title">
+      V & C Legal<br>
+      <em>Abogados</em>
+    </h1>
+    <p class="hero-subtitle">
+      Representación legal sólida, consultoría especializada y soluciones jurídicas integrales para personas físicas, morales y el sector público. Comprometidos con su patrimonio, su libertad y sus derechos.
+    </p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-primary">Consulta Gratuita</a>
+      <a href="#servicios" class="btn-secondary">Nuestros Servicios</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">+15</div>
+      <div class="stat-label">Años de Experiencia</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">+500</div>
+      <div class="stat-label">Casos Resueltos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Compromiso Legal</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Sectores Atendidos</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIÉNES SOMOS -->
+<section id="quienes">
+  <div class="quienes-grid">
+    <div class="quienes-text reveal">
+      <div class="section-tag">
+        <div class="section-tag-line"></div>
+        <span>¿Quiénes Somos?</span>
+      </div>
+      <h2 class="section-title">Una firma con <em>vocación</em> y rigor jurídico</h2>
+      <div class="section-divider"></div>
+      <p>V & C Legal Abogados es una firma jurídica especializada en la prestación de servicios legales de alto nivel, fundada con el propósito de ofrecer representación legal efectiva, asesoría estratégica y soluciones jurídicas personalizadas.</p>
+      <p>Atendemos a personas físicas, personas morales y al sector público municipal y estatal, con un equipo multidisciplinario de abogados comprometidos con la excelencia, la ética y los resultados.</p>
+      <div class="valores-grid">
+        <div class="valor-item">
+          <div class="valor-icon">⚖️</div>
+          <div class="valor-name">Integridad</div>
+          <div class="valor-desc">Actuamos con absoluta transparencia y apego a la ley en cada caso.</div>
+        </div>
+        <div class="valor-item">
+          <div class="valor-icon">🎯</div>
+          <div class="valor-name">Resultados</div>
+          <div class="valor-desc">Estrategias jurídicas orientadas al logro de los objetivos del cliente.</div>
+        </div>
+        <div class="valor-item">
+          <div class="valor-icon">🤝</div>
+          <div class="valor-name">Compromiso</div>
+          <div class="valor-desc">Acompañamos a nuestros clientes en cada etapa del proceso legal.</div>
+        </div>
+        <div class="valor-item">
+          <div class="valor-icon">🏛️</div>
+          <div class="valor-name">Excelencia</div>
+          <div class="valor-desc">Actualización permanente y dominio profundo del marco normativo vigente.</div>
+        </div>
+      </div>
+    </div>
+    <div class="quienes-visual reveal">
+      <div class="quienes-card">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">La justicia no es sólo el objetivo; es el camino que recorremos junto a cada cliente que deposita su confianza en nosotros.</p>
+        <div class="quote-author">V & C Legal Abogados — Filosofía Institucional</div>
+        <div class="pilares">
+          <div class="pilar"><div class="pilar-num">⚖</div><div class="pilar-label">Derecho</div></div>
+          <div class="pilar"><div class="pilar-num">🏛</div><div class="pilar-label">Justicia</div></div>
+          <div class="pilar"><div class="pilar-num">✦</div><div class="pilar-label">Ética</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="servicios-intro reveal">
+    <div>
+      <div class="section-tag">
+        <div class="section-tag-line"></div>
+        <span>Servicios Legales</span>
+      </div>
+      <h2 class="section-title">Áreas de <em>práctica</em> especializada</h2>
+    </div>
+    <p>Ofrecemos un portafolio integral de servicios jurídicos diseñados para dar respuesta efectiva a las necesidades legales de personas físicas, personas morales y el sector público en todos sus niveles.</p>
+  </div>
+
+  <div class="servicios-grid">
+    <div class="servicio-card reveal">
+      <div class="serv-number">01</div>
+      <div class="serv-icon">⚖️</div>
+      <h3 class="serv-title">Representación Legal</h3>
+      <p class="serv-desc">Defensa y representación jurídica profesional ante instancias jurisdiccionales, administrativas y arbitrales en todo el territorio nacional.</p>
+      <ul class="serv-list">
+        <li>Litigios civiles y mercantiles</li>
+        <li>Defensa en materia penal</li>
+        <li>Juicios administrativos</li>
+        <li>Amparo y recursos constitucionales</li>
+        <li>Litigios laborales</li>
+      </ul>
+      <span class="serv-arrow">→</span>
+    </div>
+    <div class="servicio-card reveal">
+      <div class="serv-number">02</div>
+      <div class="serv-icon">📋</div>
+      <h3 class="serv-title">Consultoría Jurídica</h3>
+      <p class="serv-desc">Asesoría legal estratégica y preventiva para la toma de decisiones informadas en el ámbito empresarial, gubernamental y personal.</p>
+      <ul class="serv-list">
+        <li>Consultoría corporativa y empresarial</li>
+        <li>Asesoría a entidades de gobierno</li>
+        <li>Revisión y redacción de contratos</li>
+        <li>Due diligence legal</li>
+        <li>Opiniones jurídicas</li>
+      </ul>
+      <span class="serv-arrow">→</span>
+    </div>
+    <div class="servicio-card reveal">
+      <div class="serv-number">03</div>
+      <div class="serv-icon">🎓</div>
+      <h3 class="serv-title">Capacitación Legal</h3>
+      <p class="serv-desc">Programas de formación y actualización jurídica dirigidos a servidores públicos, empresas y organizaciones civiles.</p>
+      <ul class="serv-list">
+        <li>Talleres para servidores públicos</li>
+        <li>Capacitación en normatividad</li>
+        <li>Formación en transparencia y acceso</li>
+        <li>Cursos de cumplimiento normativo</li>
+        <li>Seminarios jurídicos especializados</li>
+      </ul>
+      <span class="serv-arrow">→</span>
+    </div>
+    <div class="servicio-card reveal">
+      <div class="serv-number">04</div>
+      <div class="serv-icon">🏛️</div>
+      <h3 class="serv-title">Derecho Público y Municipal</h3>
+      <p class="serv-desc">Servicios especializados para instituciones de gobierno municipal y estatal, con pleno dominio del marco jurídico aplicable al sector público.</p>
+      <ul class="serv-list">
+        <li>Asesoría a ayuntamientos</li>
+        <li>Elaboración de reglamentos</li>
+        <li>Atención de responsabilidades</li>
+        <li>Contratación pública</li>
+        <li>Transparencia y rendición de cuentas</li>
+      </ul>
+      <span class="serv-arrow">→</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<section id="experiencia">
+  <div class="exp-header reveal">
+    <div>
+      <div class="section-tag">
+        <div class="section-tag-line"></div>
+        <span>Trayectoria</span>
+      </div>
+      <h2 class="section-title">Casos y <em>experiencia</em> destacada</h2>
+    </div>
+    <p>A lo largo de nuestra trayectoria hemos asistido a clientes del sector público y privado en asuntos de alta complejidad, siempre con resultados que avalan nuestra capacidad jurídica.</p>
+  </div>
+
+  <div class="exp-tabs">
+    <button class="exp-tab active" onclick="showTab('publico', this)">Sector Público</button>
+    <button class="exp-tab" onclick="showTab('empresas', this)">Personas Morales</button>
+    <button class="exp-tab" onclick="showTab('personas', this)">Personas Físicas</button>
+  </div>
+
+  <div id="publico" class="exp-panel active">
+    <div class="exp-items">
+      <div class="exp-item reveal">
+        <div class="exp-year">Sector Municipal</div>
+        <div class="exp-client">Asesoría Legal a Ayuntamientos</div>
+        <div class="exp-matter">Representación y consultoría jurídica integral a diversas administraciones municipales en materia de contratación pública, transparencia y responsabilidades.</div>
+        <span class="exp-sector">Derecho Público</span>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-year">Sector Estatal</div>
+        <div class="exp-client">Elaboración de Normatividad</div>
+        <div class="exp-matter">Diseño y revisión de reglamentos interiores, bandos de policía y gobierno, códigos de ética y manuales de organización para instituciones públicas.</div>
+        <span class="exp-sector">Derecho Administrativo</span>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-year">Rendición de Cuentas</div>
+        <div class="exp-client">Defensa ante Auditoría Superior</div>
+        <div class="exp-matter">Acompañamiento y defensa legal en procesos de auditoría, fiscalización y seguimiento de observaciones ante órganos superiores de control.</div>
+        <span class="exp-sector">Fiscalización</span>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-year">Contratación Pública</div>
+        <div class="exp-client">Procesos de Licitación</div>
+        <div class="exp-matter">Asesoría legal en procesos de adjudicación directa, invitación restringida y licitación pública, con revisión de contratos y bases de concurso.</div>
+        <span class="exp-sector">Obra Pública</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="empresas" class="exp-panel">
+    <div class="exp-items">
+      <div class="exp-item reveal">
+        <div class="exp-year">Derecho Corporativo</div>
+        <div class="exp-client">Constitución y Fusión de Sociedades</div>
+        <div class="exp-matter">Asesoría integral en procesos de constitución, fusión, escisión y liquidación de personas morales ante fedatario público y autoridades fiscales.</div>
+        <span class="exp-sector">Corporativo</span>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-year">Contratos Empresariales</div>
+        <div class="exp-client">Litigios Mercantiles</div>
+        <div class="exp-matter">Defensa en juicios ejecutivos mercantiles, controversias contractuales y reclamaciones por incumplimiento de obligaciones entre empresas.</div>
+        <span class="exp-sector">Mercantil</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="personas" class="exp-panel">
+    <div class="exp-items">
+      <div class="exp-item reveal">
+        <div class="exp-year">Derecho Familiar</div>
+        <div class="exp-client">Divorcios y Custodia</div>
+        <div class="exp-matter">Representación en procesos de divorcio, convenio de divorcio incausado, guarda y custodia de menores y pensión alimenticia.</div>
+        <span class="exp-sector">Familiar</span>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-year">Derecho Penal</div>
+        <div class="exp-client">Defensa Penal Especializada</div>
+        <div class="exp-matter">Defensa integral en el Sistema Penal Acusatorio, desde la detención hasta la sentencia, con estrategia procesal sólida y orientada a la libertad del cliente.</div>
+        <span class="exp-sector">Penal</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo">
+  <div class="equipo-header reveal">
+    <div class="section-tag" style="justify-content:center">
+      <div class="section-tag-line"></div>
+      <span>Equipo Legal</span>
+      <div class="section-tag-line"></div>
+    </div>
+    <h2 class="section-title" style="margin-top:1rem">Nuestros <em>abogados</em></h2>
+    <div class="section-divider"></div>
+    <p>Un equipo de profesionales del derecho con experiencia comprobada, formación de excelencia y vocación de servicio.</p>
+  </div>
+
+  <div class="equipo-grid">
+    <div class="abogado-card reveal">
+      <div class="abogado-avatar"><div class="avatar-overlay"></div>⚖️</div>
+      <div class="abogado-info">
+        <div class="abogado-name">Lic. Fernando Vázquez Cruz</div>
+        <div class="abogado-role">Socio Fundador · Director General</div>
+        <div class="abogado-esp">Egresado de la Escuela Libre de Derecho de Puebla (ELDP). Especialista en derecho público, administrativo y representación ante instancias gubernamentales. Amplia experiencia en el sector municipal y estatal.</div>
+        <div class="abogado-areas">
+          <span class="area-tag">Público</span>
+          <span class="area-tag">Administrativo</span>
+          <span class="area-tag">Municipal</span>
+        </div>
+      </div>
+    </div>
+    <div class="abogado-card reveal">
+      <div class="abogado-avatar"><div class="avatar-overlay"></div>🏛️</div>
+      <div class="abogado-info">
+        <div class="abogado-name">Lic. [Nombre Socio C]</div>
+        <div class="abogado-role">Socio Fundador</div>
+        <div class="abogado-esp">Experto en litigios civiles, mercantiles y penales. Amplio dominio del sistema penal acusatorio y defensa constitucional vía amparo.</div>
+        <div class="abogado-areas">
+          <span class="area-tag">Civil</span>
+          <span class="area-tag">Penal</span>
+          <span class="area-tag">Amparo</span>
+        </div>
+      </div>
+    </div>
+    <div class="abogado-card reveal">
+      <div class="abogado-avatar"><div class="avatar-overlay"></div>📋</div>
+      <div class="abogado-info">
+        <div class="abogado-name">Lic. [Abogado Asociado]</div>
+        <div class="abogado-role">Abogado Asociado</div>
+        <div class="abogado-esp">Consultoría corporativa, elaboración de contratos, due diligence y asesoría a empresas en cumplimiento normativo y contratación.</div>
+        <div class="abogado-areas">
+          <span class="area-tag">Corporativo</span>
+          <span class="area-tag">Mercantil</span>
+          <span class="area-tag">Contratos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO ── NUEVA SECCIÓN -->
+<section id="proceso">
+  <div class="proceso-header reveal">
+    <div class="section-tag" style="justify-content:center">
+      <div class="section-tag-line"></div>
+      <span>Metodología</span>
+      <div class="section-tag-line"></div>
+    </div>
+    <h2 class="section-title" style="margin-top:1rem">Nuestro <em>proceso</em> de trabajo</h2>
+    <div class="section-divider"></div>
+    <p>Cada caso es tratado con un método estructurado que garantiza claridad, estrategia y resultados concretos en cada etapa del proceso legal.</p>
+  </div>
+
+  <div class="proceso-steps">
+    <div class="proceso-step reveal">
+      <div class="paso-num">01</div>
+      <div class="paso-title">Consulta Inicial</div>
+      <div class="paso-desc">Escuchamos su caso en detalle durante una consulta gratuita y confidencial para comprender a fondo su situación y necesidades legales.</div>
+    </div>
+    <div class="proceso-step reveal">
+      <div class="paso-num">02</div>
+      <div class="paso-title">Análisis Jurídico</div>
+      <div class="paso-desc">Nuestro equipo analiza el marco normativo aplicable, evalúa los riesgos y diseña las mejores opciones estratégicas disponibles.</div>
+    </div>
+    <div class="proceso-step reveal">
+      <div class="paso-num">03</div>
+      <div class="paso-title">Estrategia Legal</div>
+      <div class="paso-desc">Presentamos un plan de acción claro, con plazos definidos, objetivos concretos y una comunicación transparente en todo momento.</div>
+    </div>
+    <div class="proceso-step reveal">
+      <div class="paso-num">04</div>
+      <div class="paso-title">Resolución y Seguimiento</div>
+      <div class="paso-desc">Ejecutamos la estrategia con rigor, representamos sus intereses con firmeza y realizamos seguimiento hasta la conclusión satisfactoria del caso.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS ── NUEVA SECCIÓN -->
+<section id="testimonios" style="background: var(--dark);">
+  <div class="testimonios-header reveal">
+    <div class="section-tag" style="justify-content:center">
+      <div class="section-tag-line"></div>
+      <span>Testimonios</span>
+      <div class="section-tag-line"></div>
+    </div>
+    <h2 class="section-title" style="margin-top:1rem">La voz de nuestros <em>clientes</em></h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="testimonios-grid">
+    <div class="testimonio-card reveal">
+      <div class="testimonio-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p class="testimonio-text">V & C Legal nos asesoró en un proceso de licitación pública muy complejo. Su conocimiento del derecho administrativo fue determinante para que nuestro ayuntamiento superara la auditoría sin observaciones.</p>
+      <div class="testimonio-author">
+        <div class="testimonio-avatar">🏛️</div>
+        <div>
+          <div class="testimonio-name">Lic. Roberto M.</div>
+          <div class="testimonio-cargo">Secretario Municipal · Puebla</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonio-card reveal">
+      <div class="testimonio-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p class="testimonio-text">Me encontraba en una situación legal muy delicada en materia penal. El Lic. Vázquez me explicó todo el proceso con claridad y logró obtener mi libertad provisional en tiempo récord. Profesionalismo total.</p>
+      <div class="testimonio-author">
+        <div class="testimonio-avatar">👤</div>
+        <div>
+          <div class="testimonio-name">Cliente Confidencial</div>
+          <div class="testimonio-cargo">Defensa Penal · Veracruz</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonio-card reveal">
+      <div class="testimonio-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p class="testimonio-text">Recurrí a V & C Legal para la constitución y structuración legal de mi empresa. El proceso fue impecable: rápido, ordenado y con una asesoría que realmente protegió mis intereses desde el inicio.</p>
+      <div class="testimonio-author">
+        <div class="testimonio-avatar">🏢</div>
+        <div>
+          <div class="testimonio-name">Lic. Daniela R.</div>
+          <div class="testimonio-cargo">Directora General · Empresa Comercial</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ ── NUEVA SECCIÓN -->
+<section id="faq">
+  <div class="faq-grid">
+    <div class="faq-intro reveal">
+      <div class="section-tag">
+        <div class="section-tag-line"></div>
+        <span>Preguntas Frecuentes</span>
+      </div>
+      <h2 class="section-title">Resolvemos sus <em>dudas</em></h2>
+      <div class="section-divider"></div>
+      <p>Sabemos que los procesos legales pueden generar incertidumbre. Aquí encontrará respuesta a las preguntas más comunes de nuestros clientes.</p>
+
+      <div class="faq-cta">
+        <p>¿Tiene una pregunta específica sobre su situación legal? Nuestro equipo está disponible para orientarle sin costo alguno.</p>
+        <a href="#contacto" class="btn-primary" style="font-size:0.62rem">Consulta Gratuita →</a>
+      </div>
+    </div>
+
+    <div class="faq-items reveal">
+      <div class="faq-item open">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>¿La primera consulta es realmente gratuita?</span>
+          <em class="faq-icon">+</em>
+        </div>
+        <div class="faq-answer">
+          <p>Sí, absolutamente. Ofrecemos una consulta inicial sin costo y sin compromiso. Durante esta sesión, uno de nuestros abogados analizará su situación y le proporcionará una orientación clara sobre sus opciones legales. Si decide contratarnos, le presentaremos una propuesta honesta y transparente.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>¿Atienden casos en todo el estado de Veracruz y Puebla?</span>
+          <em class="faq-icon">+</em>
+        </div>
+        <div class="faq-answer">
+          <p>Sí. Contamos con oficinas en Puebla Capital y en Veracruz, lo que nos permite atender casos en ambas entidades y sus municipios. También podemos asistirle en asuntos federales ante tribunales en otras partes del país cuando la naturaleza del caso lo requiera.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>¿Cuánto tiempo tarda en resolverse un caso legal?</span>
+          <em class="faq-icon">+</em>
+        </div>
+        <div class="faq-answer">
+          <p>Los plazos varían significativamente según el tipo de asunto, la instancia involucrada y la complejidad del caso. En la consulta inicial le daremos una estimación realista y honesta de los tiempos esperados para su situación específica, sin prometer resultados apresurados que puedan comprometer la calidad de la defensa.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>¿Trabajan con ayuntamientos y entidades de gobierno?</span>
+          <em class="faq-icon">+</em>
+        </div>
+        <div class="faq-answer">
+          <p>Sí. Tenemos amplia experiencia en la asesoría jurídica al sector público, incluyendo ayuntamientos, dependencias estatales y organismos descentralizados. Conocemos a fondo el marco normativo del servicio público, la Ley de Adquisiciones, la normativa de transparencia y los procedimientos de fiscalización.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>¿Cómo son sus honorarios?</span>
+          <em class="faq-icon">+</em>
+        </div>
+        <div class="faq-answer">
+          <p>Nuestros honorarios se establecen de manera personalizada según la complejidad y naturaleza de cada caso. Siempre presentamos una propuesta económica clara y por escrito antes de iniciar cualquier trabajo. Ofrecemos esquemas flexibles y en algunos casos podemos acordar honorarios con base en resultados.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>¿Qué debo llevar a la primera consulta?</span>
+          <em class="faq-icon">+</em>
+        </div>
+        <div class="faq-answer">
+          <p>Le recomendamos traer cualquier documento relevante relacionado con su asunto: contratos, notificaciones, resoluciones, comunicaciones oficiales o cualquier evidencia que considere importante. Si no cuenta con documentos en ese momento, no se preocupe; la plática inicial es suficiente para que podamos orientarle.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG / ARTÍCULOS ── NUEVA SECCIÓN -->
+<section id="blog">
+  <div class="blog-header reveal">
+    <div>
+      <div class="section-tag">
+        <div class="section-tag-line"></div>
+        <span>Blog Jurídico</span>
+      </div>
+      <h2 class="section-title">Conocimiento legal <em>al alcance</em> de todos</h2>
+    </div>
+    <p>Compartimos artículos y análisis sobre temas legales relevantes para que nuestros clientes y la comunidad tomen decisiones informadas.</p>
+  </div>
+
+  <div class="blog-grid">
+    <div class="blog-card featured reveal">
+      <div class="blog-img">
+        <div class="blog-img-pattern"></div>
+        <div class="blog-img-overlay"></div>
+        🏛️
+      </div>
+      <div class="blog-content">
+        <span class="blog-cat">Derecho Público</span>
+        <div class="blog-title">Todo lo que los servidores públicos deben saber sobre responsabilidades administrativas en 2025</div>
+        <p class="blog-excerpt">El marco normativo de responsabilidades administrativas ha evolucionado significativamente. En este artículo explicamos las obligaciones clave, los procedimientos de investigación y cómo proteger su actuación como servidor público dentro de la ley.</p>
+        <div class="blog-meta">
+          <span class="blog-date">Marzo 2025</span>
+          <span class="blog-read">Leer artículo →</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-card reveal">
+      <div class="blog-img" style="height:150px">
+        <div class="blog-img-pattern"></div>
+        <div class="blog-img-overlay"></div>
+        ⚖️
+      </div>
+      <div class="blog-content">
+        <span class="blog-cat">Derecho Penal</span>
+        <div class="blog-title">Sistema Penal Acusatorio: sus derechos desde el primer momento</div>
+        <div class="blog-meta">
+          <span class="blog-date">Febrero 2025</span>
+          <span class="blog-read">Leer →</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-card reveal">
+      <div class="blog-img" style="height:150px">
+        <div class="blog-img-pattern"></div>
+        <div class="blog-img-overlay"></div>
+        📋
+      </div>
+      <div class="blog-content">
+        <span class="blog-cat">Corporativo</span>
+        <div class="blog-title">Due diligence legal: qué revisar antes de comprar una empresa</div>
+        <div class="blog-meta">
+          <span class="blog-date">Enero 2025</span>
+          <span class="blog-read">Leer →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contacto-grid">
+    <div class="reveal">
+      <div class="section-tag">
+        <div class="section-tag-line"></div>
+        <span>Contacto</span>
+      </div>
+      <h2 class="section-title">Hablemos de su <em>caso</em></h2>
+      <div class="section-divider"></div>
+      <p style="color:var(--gray);font-size:0.85rem;line-height:1.9;margin-bottom:1rem">
+        La primera consulta es gratuita. Nuestro equipo analizará su situación y le proporcionará una orientación clara sobre las mejores opciones legales disponibles.
+      </p>
+
+      <div class="contacto-items">
+        <div class="contacto-item">
+          <div class="contacto-item-icon">📍</div>
+          <div>
+            <div class="contacto-item-label">Dirección</div>
+            <div class="contacto-item-value">Oficinas en Puebla Capital y Veracruz</div>
+          </div>
+        </div>
+        <div class="contacto-item">
+          <div class="contacto-item-icon">📞</div>
+          <div>
+            <div class="contacto-item-label">Teléfono</div>
+            <div class="contacto-item-value">+52 223 101 1426</div>
+          </div>
+        </div>
+        <div class="contacto-item">
+          <div class="contacto-item-icon">💬</div>
+          <div>
+            <div class="contacto-item-label">WhatsApp</div>
+            <div class="contacto-item-value">
+              <a href="https://wa.me/522221621682" target="_blank" style="color:var(--gold-light);text-decoration:none;font-size:0.82rem;">+52 222 162 1682</a>
+              <div style="margin-top:1rem;">
+                <div style="background:var(--white);padding:10px;display:inline-block;border:2px solid var(--gold);border-radius:4px;">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=https://wa.me/522221621682&color=0a0a0a&bgcolor=f5f2eb"
+                       alt="QR WhatsApp V&C Legal" width="130" height="130" style="display:block;">
+                </div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);margin-top:0.6rem;">Escanea para escribirnos</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contacto-item">
+          <div class="contacto-item-icon">✉️</div>
+          <div>
+            <div class="contacto-item-label">Correo Electrónico</div>
+            <div class="contacto-item-value"><a href="/cdn-cgi/l/email-protection#dcbfb3b2a8bdbfa8b39caaa5bfb0b9bbbdb0f2b1a4" style="color:var(--gold-light);text-decoration:none;"><span class="__cf_email__" data-cfemail="01626e6f756062756e417778626d6466606d2f6c79">[email&#160;protected]</span></a></div>
+          </div>
+        </div>
+        <div class="contacto-item">
+          <div class="contacto-item-icon">🕐</div>
+          <div>
+            <div class="contacto-item-label">Horario de Atención</div>
+            <div class="contacto-item-value">Lunes a Viernes: 9:00 — 19:00 hrs<br>Sábados: 9:00 — 13:00 hrs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contacto-form reveal">
+      <h3 class="form-title">Consulta Gratuita</h3>
+      <p class="form-subtitle">Complete el formulario y nos comunicaremos con usted a la brevedad posible.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre completo *</label>
+          <input type="text" placeholder="Su nombre">
+        </div>
+        <div class="form-group">
+          <label>Teléfono *</label>
+          <input type="tel" placeholder="(000) 000-0000">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Correo electrónico *</label>
+        <input type="email" placeholder="correo@ejemplo.com">
+      </div>
+
+      <div class="form-group">
+        <label>Tipo de cliente</label>
+        <select>
+          <option value="">Seleccione una opción</option>
+          <option>Persona Física</option>
+          <option>Persona Moral / Empresa</option>
+          <option>Gobierno Municipal</option>
+          <option>Gobierno Estatal</option>
+          <option>Otro</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Área legal de interés</label>
+        <select>
+          <option value="">Seleccione una opción</option>
+          <option>Representación Legal / Litigios</option>
+          <option>Consultoría Jurídica</option>
+          <option>Derecho Penal</option>
+          <option>Derecho Familiar</option>
+          <option>Derecho Público y Municipal</option>
+          <option>Capacitación Legal</option>
+          <option>Otro</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Descripción breve del asunto</label>
+        <textarea placeholder="Describa brevemente su situación legal..."></textarea>
+      </div>
+
+      <button class="form-submit" onclick="submitForm()">Solicitar Consulta Gratuita</button>
+    </div>
+  </div>
+</section>
+
+<!-- MAPA / SEDES ── NUEVA SECCIÓN -->
+<section id="mapa">
+  <div class="mapa-grid">
+    <div class="mapa-info reveal">
+      <div class="section-tag">
+        <div class="section-tag-line"></div>
+        <span>Nuestras Sedes</span>
+      </div>
+      <div class="mapa-title">Presencia en <em>dos estados</em></div>
+      <div class="mapa-divider"></div>
+      <div class="mapa-sedes">
+        <div class="sede">
+          <div class="sede-icon">🏛️</div>
+          <div>
+            <div class="sede-city">Puebla Capital</div>
+            <div class="sede-address">Sede principal · Puebla, Pue.</div>
+            <div class="sede-phone">+52 223 101 1426</div>
+          </div>
+        </div>
+        <div class="sede">
+          <div class="sede-icon">⚖️</div>
+          <div>
+            <div class="sede-city">Veracruz</div>
+            <div class="sede-address">Oficina regional · Veracruz, Ver.</div>
+            <div class="sede-phone">+52 223 101 1426</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mapa-visual">
+      <div class="mapa-grid-bg"></div>
+      <div class="mapa-dot mapa-dot-1"></div>
+      <div class="mapa-dot mapa-dot-2"></div>
+      <div class="mapa-line"></div>
+      <div class="mapa-label mapa-label-1">Puebla</div>
+      <div class="mapa-label mapa-label-2">Veracruz</div>
+      <div class="mapa-placeholder">
+        <div class="mapa-placeholder-icon">🗺️</div>
+        <p>Cobertura regional<br>Puebla — Veracruz</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="#inicio" class="footer-logo-f">V <span>&</span> C Legal</a>
+      <p class="footer-tagline">Firma jurídica especializada en representación legal, consultoría y capacitación. Comprometida con la excelencia, la ética y sus resultados.</p>
+      <div class="footer-social">
+        <a href="https://wa.me/522221621682" target="_blank" class="social-btn" title="WhatsApp">💬</a>
+        <a href="/cdn-cgi/l/email-protection#7b1814150f1a180f143b0d0218171e1c1a17551603" class="social-btn" title="Correo">✉️</a>
+        <a href="#" class="social-btn" title="LinkedIn">in</a>
+        <a href="#" class="social-btn" title="Facebook">f</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#servicios">Representación Legal</a></li>
+        <li><a href="#servicios">Consultoría Jurídica</a></li>
+        <li><a href="#servicios">Capacitación Legal</a></li>
+        <li><a href="#servicios">Derecho Público</a></li>
+        <li><a href="#servicios">Derecho Familiar</a></li>
+        <li><a href="#servicios">Derecho Penal</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>La Firma</h4>
+      <ul>
+        <li><a href="#quienes">Quiénes Somos</a></li>
+        <li><a href="#equipo">Nuestro Equipo</a></li>
+        <li><a href="#experiencia">Casos Destacados</a></li>
+        <li><a href="#proceso">Proceso de Trabajo</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#blog">Blog Jurídico</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="tel:+522231011426">+52 223 101 1426</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#83e0ecedf7e2e0f7ecc3f5fae0efe6e4e2efadeefb"><span class="__cf_email__" data-cfemail="b0d3dfdec4d1d3c4dff0c6c9d3dcd5d7d1dc9eddc8">[email&#160;protected]</span></a></li>
+        <li><a href="https://wa.me/522221621682" target="_blank">WhatsApp Directo</a></li>
+        <li><a href="#contacto">Consulta Gratuita</a></li>
+        <li><a href="#faq">Preguntas Frecuentes</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 V & C Legal Abogados. Todos los derechos reservados.</div>
+    <div class="footer-legal">
+      <a href="#">Aviso de Privacidad</a>
+      <a href="#">Términos de Uso</a>
+      <a href="#">Código de Ética</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/522221621682" target="_blank" class="whatsapp-float" title="Escríbenos por WhatsApp">
+  💬
+  <span class="whatsapp-tooltip">Escríbenos ahora</span>
+</a>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Tabs
+  function showTab(id, btn) {
+    document.querySelectorAll('.exp-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.exp-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    if (btn) btn.classList.add('active');
+    else event.target.classList.add('active');
+  }
+
+  // FAQ accordion
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Form submit
+  function submitForm() {
+    alert('¡Gracias! Hemos recibido su solicitud. Nos comunicaremos con usted a la brevedad posible.\n\nV & C Legal Abogados');
+  }
+
+  // Hamburger
+  function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    const isVisible = links.style.display === 'flex';
+    links.style.d
